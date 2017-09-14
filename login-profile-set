@@ -1,0 +1,15 @@
+ export HISTFILESIZE=1000000000
+ export HISTSIZE=1000000
+ export PROMPT_COMMAND="history -a"
+ export HISTTIMEFORMAT="%Y-%m-%d_%H:%M:%S  "
+ ulimit -SHn 65536
+ ####User Login Log###
+ if ! test -z "$BASH_EXECUTION_STRING" ; then
+         echo "===== $(date "+%F %T") $USER nologin cmd:  $BASH_EXECUTION_STRING" >>/var/log/command.log
+ elif  shopt -q login_shell ; then
+         printf "====== $(date "+%F %T") new login the last cmd: ">>/var/log/command.log
+ else
+         printf "====== $(date "+%F %T") su  the last cmd: ">>/var/log/command.log
+ fi
+ export HISTTIMEFORMAT="%F %T  $USER ${SSH_TTY:5} ${SSH_CLIENT%% *}  "
+ export PROMPT_COMMAND="history 1|tail -1|sed 's/^[ ]\+[0-9]\+  //'>> /var/log/command.log"
