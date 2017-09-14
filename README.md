@@ -20,4 +20,4 @@
   http://www.longma.tk
 
 ## Support Me
-如果你认为我值得获得一定的报酬（加个���或者来杯☕️），请使用微信或支付宝扫描下面的二维码向我捐赠.
+如果你认为我值得获得一定的报酬（加个![](https://assets-cdn.github.com/images/icons/emoji/unicode/1f357.png)或者来杯☕️），请使用微信或支付宝扫描下面的二维码向我捐赠.
