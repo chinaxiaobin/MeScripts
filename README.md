@@ -22,4 +22,4 @@
 ## Support Me
 如果你认为我值得获得一定的报酬（加个:hamburger:或者来杯☕️），请使用微信或支付宝扫描下面的二维码向我捐赠.
 ![](http://ovqi1kanv.bkt.clouddn.com/zhifubao-2.png)
-![](http://ovqi1kanv.bkt.clouddn.com/weixin-2.png)
+![](http://ovqi1kanv.bkt.clouddn.com/weixin-3.png)
