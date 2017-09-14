@@ -8,3 +8,16 @@
 - tiaoban.sh    利用shell实现跳板机的功能
 - wx-checkservice 实现守护进程，当某进程终止时自动启动
 - zabbix-agent_auto_deploy  zabbix-agent自动部署
+
+# Update
+- 2017-09-14 Create
+
+# Suggest
+
+如果你有更好的建议或意见，可以给我Email.  345820392@qq.com
+
+# My-Blog
+  http://www.longma.tk
+
+# Support Me
+如果你认为我值得获得一定的报酬（加个���或者来杯☕️），请使用微信或支付宝扫描下面的二维码向我捐赠.
