@@ -29,6 +29,10 @@ sudo tee /etc/docker/daemon.json <<-'EOF'
 - docker images #查看本地镜像
 - docker tag dl.dockerpool.com:5000/ubuntu:latest  ubuntu:latest #创建标签，都是指向同一个image id
 - docker search #搜索镜像
+  	docker search tianon/  #只搜索某个用户下的镜像
+       
+        docker search jenkins  -s 20 #搜索star星级20以上的镜像
+
 - docker rmi images[TAG|id]  
 	
 	删除本地镜像，格式  Name:Tag| Image id  如果存在多个标签，默认删除标签，只有一个标签则删除镜像
