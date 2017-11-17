@@ -1,4 +1,11 @@
 
+### 启动zookeeper
+ /usr/local/zookeeper/bin/zkServer.sh restart
+
+### 启动kafka
+nohup ./kafka-server-start.sh ../config/server.properties 1>/dev/null 2>&1 & 
+
+
 ### 创建主题test
 
 * --replication-factor 1 根据broke数量设置即可
@@ -6,79 +13,40 @@
 
 
 ### 生产消息
+cd /usr/local/kafka/bin
 ./kafka-console-producer.sh --broker-list 192.168.200.171:9092 --topic apiweb_log
 
 ### 消费消息
-bin/kafka-console-consumer.sh --zookeeper 192.168.200.171:2181 --topic apiweb_log --from-beginning
+cd /usr/local/kafka/bin
+./kafka-console-consumer.sh --zookeeper 192.168.200.171:2181 --topic apiweb_log --from-beginning
 
- ### 删除topic 
-./kafka-topics.sh  --delete --zookeeper 192.168.200.171:2181  --topic apiweb_log
+* 生产消息和消费消息联合测试是否正常，启用两个终端窗口，一边输入生产消息，消费输出消息即正常
 
-查看主题
+
+
+### 查看所有主题
 /usr/local/kafka/bin/kafka-topics.sh --list  --zookeeper 192.168.200.171:2181
 
 
-[api_accountbasic_fangzhen, test, api_contactcard_fangzhen, fkafkav20, business-card-correct, api_accountbasic, apiweb_log, fkafkav20_test, api_funccard_fangzhen, oradt_scancard, imorav20, api_mapfriend_fangzhen, ok, api_scancard_fangzhen, __consumer_offsets, imorav20_test, wxapi_bizcardpoll]
+[api_accountbasic_fangzhen, test, api_contactcard_fangzhen, fkafkav20, business-card-correct,
+api_accountbasic, apiweb_log, fkafkav20_test, api_funccard_fangzhen, oradt_scancard, imorav20,
+api_mapfriend_fangzhen, ok, api_scancard_fangzhen, __consumer_offsets, imorav20_test, wxapi_bizcardpoll]
 
 
-__consumer_offsets
-rmr /brokers/topics/api_accountbasic
-rmr /brokers/topics/api_accountbasic_fangzhen
-rmr /brokers/topics/api_contactcard_fangzhen
-rmr /brokers/topics/api_funccard_fangzhen
-rmr /brokers/topics/api_mapfriend_fangzhen
-rmr /brokers/topics/api_scancard_fangzhen
-rmr /brokers/topics/apiweb_log  
-rmr /brokers/topics/business-card-correct
-rmr /brokers/topics/fkafkav20
-rmr /brokers/topics/fkafkav20_test
-rmr /brokers/topics/imorav20
-rmr /brokers/topics/imorav20_test
-rmr /brokers/topics/ok
-rmr /brokers/topics/oradt_scancard
-rmr /brokers/topics/test
-rmr /brokers/topics/wxapi_bizcardpoll
+ ### 删除topic 
+ cd /usr/local/kafka/bin
+./kafka-topics.sh  --delete --zookeeper 192.168.200.171:2181  --topic apiweb_log
+```
+此时你若想真正删除它，可以如下操作：
+（1）登录zookeeper客户端的命令：
+zookeeper/bin/zkCli.sh 
+
+（2）找到topic所在的目录：
+ls /brokers/topics
+
+（3）找到要删除的topic，执行如下命令即可，此时topic被彻底删除：
+rmr /brokers/topics/topic名称
+```
 
 
-
-启动zookeeper
- /usr/local/zookeeper/bin/zkServer.sh restart
-
-启动kafka
-nohup ./kafka-server-start.sh ../config/server.properties 1>/dev/null 2>&1 & 
-
-
-
-cloud_admin@oradt.com
-
-
-CS-Api-1789451636.cn-north-1.elb.amazonaws.com.cn
-
-
-http://cs-web-67257065.cn-north-1.elb.amazonaws.com.cn/Appadmin/Login/index.html 
-cloud_admin@oradt.com  
-Oradt!123 
-
-    #：API主数据库配置----------
-    database_driver: pdo_mysql
-    database_host: oratest.cg8lsqcdu243.rds.cn-north-1.amazonaws.com.cn
-    database_port: 3306
-    database_name: oradt_cloud_fztest
-    database_user: oradt_fzuser
-    database_password: ofuk_8tHD97
-
-
-
-    Ip：oratest.cg8lsqcdu243.rds.cn-north-1.amazonaws.com.cn
-	Port： 3306
-	Database：oradt_cloud_fztest
-	User: oradt_fzuser   
-	Pass: ofuk_8tHD97
-
-
-mysql -h oratest.cg8lsqcdu243.rds.cn-north-1.amazonaws.com.cn -uoradt_fzuser -p
-
-
-
-
-ansible  simu-api  -m copy -a "src=/home/libin/20171116/RecommendKeys.json   dest=/data/webcode/api/web/res/ "
+ 
