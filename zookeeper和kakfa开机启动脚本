@@ -1,0 +1,48 @@
+#############
+zookeeper开机启动脚本
+
+
+#!/bin/bash  
+#chkconfig:2345 20 90  
+#description:zookeeper  
+#processname:zookeeper  
+export JAVA_HOME=//usr/java/jdk1.8.0_112  
+case $1 in  
+        start) su root /usr/local/zookeeper-3.4.5/bin/zkServer.sh start;;  
+        stop) su root /usr/local/zookeeper-3.4.5/bin/zkServer.sh stop;;  
+        status) su root /usr/local/zookeeper-3.4.5/bin/zkServer.sh status;;  
+        restart) su /usr/local/zookeeper-3.4.5/bin/zkServer.sh restart;;  
+        *) echo "require start|stop|status|restart" ;;  
+esac 
+
+
+service zookeeper start
+service zookeeper stop
+service zookeeper status 
+
+
+chkconfig --add zookeeper
+chkconfig zookeeper on 
+chkconfig --list |grep zookeeper
+
+
+##################################
+#############################
+#kafka开机启动脚本
+
+#!/bin/bash  
+#chkconfig:2345 30 80  
+#description:kafka
+#processname:kafka
+export JAVA_HOME=/usr/local/jdk1.8
+case $1 in  
+        start) nohup /usr/local/kafka/bin/kafka-server-start.sh  /usr/local/kafka/config/server.properties > /dev/null 2>&1 & ;;
+        stop)  nohup /usr/local/kafka/bin/kafka-server-stop.sh /usr/local/kafka/config/server.properties > /dev/null 2>&1 &  ;; 
+        *) echo "require start|stop" ;;
+esac
+
+
+
+
+注意：#chkconfig:2345 30 80  这里的30 要比 zookeerper 中的大，表示比其慢启动。80比zookeeper中的小，表示比其先关闭。这样改了之后还是启动不起来，20160320。
+step5:要添加服务
