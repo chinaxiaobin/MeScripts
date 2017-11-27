@@ -8,6 +8,7 @@
 - tiaoban.sh    利用shell实现跳板机的功能
 - wx-checkservice 实现守护进程，当某进程终止时自动启动
 - zabbix-agent_auto_deploy  zabbix-agent自动部署
+- zookeeper和kafka 开机启动脚本，
 
 ## Update
 - 2017-09-14 Create
