@@ -20,6 +20,10 @@ cd /usr/local/kafka/bin
 cd /usr/local/kafka/bin
 ./kafka-console-consumer.sh --zookeeper 192.168.200.171:2181 --topic apiweb_log --from-beginning
 
+###追踪消费的最后几条消息
+cd /usr/local/kafka/bin 
+./kafka-console-consumer.sh --zookeeper 192.168.200.171:2181 --topic apiweb_log  
+
 * 生产消息和消费消息联合测试是否正常，启用两个终端窗口，一边输入生产消息，消费输出消息即正常
 
 ### 查看消费情况
