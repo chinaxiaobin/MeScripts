@@ -8,3 +8,7 @@ ps -A  | grep java  直接获取相关进程的pid
 
 # grep命令
 grep -rn "字符串"  ./  在当前目录下查找与该字符串相关的文件
+
+# usermod 命令
+
+usermod -e 2018-01-04 表示tom用户在2018-01-04过期，禁止登录
